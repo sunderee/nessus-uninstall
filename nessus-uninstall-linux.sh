@@ -6,7 +6,7 @@ debug_print() {
     printf "\n$STARTCOLOR%b$ENDCOLOR\n" "$1";
 }
 
-operating_system=$( (lsb_release -ds || cat /etc/*release || uname -om) 2>/dev/null | head -n1 )
+operating_system=$( (lsb_release --description --short || cat /etc/*release || uname --operating-system --machine) 2>/dev/null | head -n1 )
 printf "Running on %s" "$operating_system"
 
 debug_print "Step 1: Stop the Nessus service"
